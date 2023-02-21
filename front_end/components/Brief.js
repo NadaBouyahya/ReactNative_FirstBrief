@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
-import { FlatList, Text, View } from "react-native";
+import { FlatList, Text, View} from "react-native";
 
 export default function Brief() {
 
     const [Brief, setBrief] = useState([]);
 
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/api/brief')
+        axios.get('https://restcountries.com/v2/all')
             .then((response) => {
-                console.log(response.data[0].name.common);
+                // console.log(response.data);
                 setBrief(response.data);
             })
             .catch(error => console.log(error));
@@ -20,9 +20,10 @@ export default function Brief() {
             <FlatList
                 data={Brief}
                 renderItem={({ item }) => (
-                    <Text>{item.name.common}</Text>
+                    <Text>{item.name}</Text>
                 )}
-            />
+
+                />
         </View>
     )
 

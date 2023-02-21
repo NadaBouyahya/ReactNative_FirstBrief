@@ -1,13 +1,12 @@
+import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
-import { View } from "react-native";
-
-import Brief from "./components/Brief";
-
+import MainContainer from "./navigation/MainContainer";
 
 export default function App() {
   return (
-    <View>
-      <Brief />
-    </View>
+    <NavigationContainer>
+      <MainContainer />
+    </NavigationContainer>
+
   )
 }
