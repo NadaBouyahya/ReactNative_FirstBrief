@@ -3,7 +3,6 @@ import { StyleSheet } from "react-native";
 import Icon from 'react-native-vector-icons/Ionicons'
 import Icon2 from 'react-native-vector-icons/FontAwesome5'
 
-import TabBarContent from "../components/test/TabBarContent";
 
 //screens
 import Brief from "../components/Brief";
@@ -23,7 +22,7 @@ export default function MainContainer() {
             <Tab.Navigator
               screenOptions={{
                 headerShown:false,
-                tabBarShowLabel:true,
+                tabBarShowLabel:false,
                 tabBarStyle: {
                      position:"absolute",
                     //  bottom:1,
