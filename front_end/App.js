@@ -2,9 +2,9 @@ import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
 import MainContainer from "./navigation/MainContainer";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-// import { Image, ImageBackground, View } from "react-native";
 import Icon from 'react-native-vector-icons/FontAwesome'
 import Logo from "./components/Logo";
+import Menu from "./components/Menu";
 
 
 const stack = createNativeStackNavigator();
@@ -12,15 +12,24 @@ const stack = createNativeStackNavigator();
 export default function App() {
   return (
     <>
+    <Menu/>
       <NavigationContainer>
         <stack.Navigator>
           <stack.Screen
             name='home'
             component={MainContainer}
             options={{
-              headerTitle: (props) => <Logo {...props} />,
+              title: "Hello Nada",
+              headerTitleAlign: 'center',
+              headerTitleStyle: {
+                fontSize : 20,
+                fontFamily : ''
+              },
+              headerLeft: () => ( <Logo/> ),
               headerRight: () => (
                 <Icon
+                    onPress={() => alert('This is a button!')}
+
                   name='caret-down'
                   color='gray'
                   size={25}
@@ -31,11 +40,12 @@ export default function App() {
                 //   title="Info"
                 //   // color="#fff"
                 // />
+
               ),
             }}
+
           />
         </stack.Navigator>
-        {/* <MainContainer /> */}
       </NavigationContainer>
     </>
 
