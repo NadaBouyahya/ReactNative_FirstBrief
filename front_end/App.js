@@ -4,7 +4,8 @@ import MainContainer from "./navigation/MainContainer";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Icon from 'react-native-vector-icons/FontAwesome'
 import Logo from "./components/Logo";
-import Menu from "./components/Menu";
+import {Button, TouchableOpacity } from "react-native";
+import MyAlert from "./components/MyAlert";
 
 
 const stack = createNativeStackNavigator();
@@ -12,7 +13,6 @@ const stack = createNativeStackNavigator();
 export default function App() {
   return (
     <>
-    <Menu/>
       <NavigationContainer>
         <stack.Navigator>
           <stack.Screen
@@ -22,25 +22,18 @@ export default function App() {
               title: "Hello Nada",
               headerTitleAlign: 'center',
               headerTitleStyle: {
-                fontSize : 20,
-                fontFamily : ''
+                fontSize: 20,
+                fontFamily: ''
               },
-              headerLeft: () => ( <Logo/> ),
+              headerLeft: () => (<Logo />),
               headerRight: () => (
-                <Icon
-                    onPress={() => alert('This is a button!')}
-
-                  name='caret-down'
-                  color='gray'
-                  size={25}
-                />
-
-                // <Button
-                //   onPress={() => alert('This is a button!')}
-                //   title="Info"
-                //   // color="#fff"
-                // />
-
+                <TouchableOpacity onPress={MyAlert}>
+                  <Icon
+                    name='caret-down'
+                    color='gray'
+                    size={25}
+                  />
+                </TouchableOpacity>
               ),
             }}
 
