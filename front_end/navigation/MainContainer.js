@@ -1,11 +1,11 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { StyleSheet, TouchableOpacity } from "react-native";
+import { StyleSheet } from "react-native";
 import Icon from 'react-native-vector-icons/Ionicons'
 import Icon2 from 'react-native-vector-icons/FontAwesome5'
 
 
 //screens
-import Brief from "../components/Brief";
+import Brief from "./screens/Brief";
 import Home from "./screens/Home";
 import Task from "./screens/Tasks";
 
