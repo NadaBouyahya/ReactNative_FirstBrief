@@ -1,15 +1,14 @@
 import React from 'react'
 import { Alert, TouchableOpacity } from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome'
 
 function MyAlert() {
 
-    Alert.alert('', 'Choose what you want', [
+    Alert.alert('', 'Are you sure you want to leave', [
         {
-            text: 'cancel'
+            text: 'Yes'
         },
         {
-            text: 'log out'
+            text: 'No'
         }
     ],
         // {cancelable:false}

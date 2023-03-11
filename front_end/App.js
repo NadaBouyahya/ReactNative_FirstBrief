@@ -2,7 +2,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
 import MainContainer from "./navigation/MainContainer";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Icon from 'react-native-vector-icons/FontAwesome'
+import Icon from 'react-native-vector-icons/AntDesign'
 import Logo from "./components/Logo";
 import {Button, TouchableOpacity } from "react-native";
 import MyAlert from "./components/MyAlert";
@@ -29,7 +29,7 @@ export default function App() {
               headerRight: () => (
                 <TouchableOpacity onPress={MyAlert}>
                   <Icon
-                    name='caret-down'
+                    name='logout'
                     color='gray'
                     size={25}
                   />
