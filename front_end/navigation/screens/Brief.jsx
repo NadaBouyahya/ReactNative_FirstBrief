@@ -1,21 +1,25 @@
 
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
-import { FlatList, Text, View, StyleSheet, TouchableOpacity, Alert } from "react-native";
+import { FlatList, Text, View, StyleSheet, TouchableOpacity, Button } from "react-native";
 import Modal_ from "../../components/Modal";
 
 
 export default function Brief() {
 
     const [Brief, setBrief] = useState([]);
+    const [modalId, setId] = useState(0);
     const [modalVisibility, setModalVisibility] = useState(false)
 
     const changeVisibility = (bool) => {
-        setModalVisibility(bool)
+        setModalVisibility(bool);
+    }
+    const changeId = (id) => {
+        setId(id);
     }
 
     useEffect(() => {
-        axios.get('http://192.168.1.7/api/brief')
+        axios.get('http://192.168.137.188/api/brief')
             .then((response) => {
                 // console.log(response.data);
                 setBrief(response.data);
@@ -27,12 +31,14 @@ export default function Brief() {
 
     return (
         <View style={styles.mainContainer}>
+            <Text style={styles.briefCount}>you have {Brief.length} briefs</Text>
 
             <Modal_
-                closeModal={()=>{changeVisibility(false)}}
+                closeModal={() => { changeVisibility(false) }}
                 transparent={true}
                 isModalVisible={modalVisibility}
-                onRequestClose={ ()=> changeVisibility(false)}
+                onRequestClose={() => changeVisibility(false)}
+                id={modalId}
             />
 
             <FlatList
@@ -41,9 +47,9 @@ export default function Brief() {
 
                 renderItem={({ item }) => (
                     <View style={styles.dataContainer}>
-                        <TouchableOpacity style={styles.dataItems} onPress={() => { changeVisibility(true) }}>
-                            <Text style={styles.title}>{item.title}</Text>
-                            <Text style={styles.date}>from : {item.date_start} to : {item.date_end} </Text>
+                        <TouchableOpacity style={styles.dataItems} onPress={() => { changeVisibility(true); changeId(item.id); }}>
+                            <Text style={styles.title}>{item.name}</Text>
+                            <Text style={styles.date}>duration : {item.duration} days </Text>
                         </TouchableOpacity>
                     </View>
                 )}
@@ -60,6 +66,9 @@ const styles = StyleSheet.create({
         alignItems: "center",
         marginTop: 10,
         marginBottom: 10
+    },
+    briefCount: {
+        color: 'black'
     },
 
     dataContainer: {

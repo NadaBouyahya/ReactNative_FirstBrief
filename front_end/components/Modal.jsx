@@ -1,7 +1,18 @@
-import { React } from "react";
-import { StyleSheet, Modal, Text, TouchableOpacity, Button, View } from "react-native";
+import axios from "axios";
+import { React, useEffect, useState } from "react";
+import { StyleSheet, Modal, Text, Button, View } from "react-native";
 
 function Modal_(p) {
+  const [modalData, setModalData] = useState({});
+
+  useEffect(() => {
+    axios.get('http://192.168.137.188/api/brief/' + p.id)
+      .then((res) => {
+        setModalData(res.data);
+      })
+
+  }, [p.id])
+
   return (
     <View style={styles.centeredView}>
       <Modal
@@ -12,7 +23,9 @@ function Modal_(p) {
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.textModal}>hii</Text>
+            <Text style={styles.textModal}>{modalData.name}</Text>
+            <Text style={styles.textModal}>{modalData.description}</Text>
+            <Text style={styles.textModal} >{modalData.tutor.firstname}</Text>
             <Button title="close" onPress={p.closeModal}></Button>
           </View>
         </View>
@@ -31,7 +44,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor:"rgba(0,0,0,0.6)"
+    backgroundColor: "rgba(0,0,0,0.6)"
   },
   modalView: {
     margin: 20,

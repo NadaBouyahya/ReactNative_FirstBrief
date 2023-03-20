@@ -20,3 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/brief', [BriefController::class, 'getAllBriefs']);
+Route::get('/brief/{id}', [BriefController::class, 'getBriefByID']);
